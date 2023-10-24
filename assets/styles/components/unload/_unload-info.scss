@@ -1,0 +1,22 @@
+.unload-info {
+  &__zip {
+    &-title {
+      display: block;
+      font-size: 16px * $tem;
+    }
+
+    &-copy {
+      display: block;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+      text-decoration: dotted;
+  
+      @include start-at(xslg) {
+        display: inline-block;
+        margin: 0 0 0 16px * $rem;
+      }
+    }
+  }
+}

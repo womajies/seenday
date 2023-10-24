@@ -1,0 +1,21 @@
+.unload-card {
+  padding: $inner-gap;
+  margin: 0;
+  border: none;
+  border-left: 10px*$rem solid;
+  border-radius: $border-radius;
+  font-size: 14px*$tem;
+  text-align: left;
+  cursor: pointer;
+
+  &--success {
+    border-color: var(--color_success);
+  }
+  &--danger {
+    border-color: var(--color_danger);
+  }
+
+  &__row {
+    display: block;
+  }
+}

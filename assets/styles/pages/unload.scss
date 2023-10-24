@@ -1,0 +1,48 @@
+.unload {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "info"
+    "contents";
+  grid-template-columns: 1fr;
+  grid-gap: $grid-gap;
+  width: 100%;
+  max-height: 100%;
+  font-size: 14px*$tem;
+  line-height: 1.2;
+
+  @include start-at(xslg) {
+    grid-template-areas:
+      "header info"
+      "contents info";
+    grid-template-columns: 35% 1fr;
+  }
+
+  &-header {
+    grid-area: header;
+    width: 100%;
+    height: fit-content;
+
+    &__list {
+      padding-left: $inner-gap;
+      margin: 0;
+    }
+
+    &__item {
+      list-style-type: "– ";
+    }
+  }
+
+  &-content {
+    grid-area: contents;
+  }
+
+  &-info {
+    position: sticky;
+    top: $inner-gap;
+    left: 0;
+    grid-area: info;
+    height: fit-content;
+  }
+}
