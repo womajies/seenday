@@ -9,7 +9,7 @@
       </ul>
     </Block>
     <div class="unload-info">
-      <UnloadInfo v-if="showInfoItem" :item="showInfoItem" />
+      <UnloadInfo v-if="showInfoItem" :item="showInfoItem" @close-info="handleCloseInfo" />
       <UiNotice v-else class="unload-info__notice">
         Для того, чтобы просмотреть информацию о <b class="text-bold">выгрузке</b>, а также ее скачать, нажмите на
         требуемую
@@ -25,5 +25,9 @@ const showInfoItem = ref(null);
 
 const handleShowInfo = (evt) => {
   showInfoItem.value = evt;
+};
+
+const handleCloseInfo = () => {
+  showInfoItem.value = null;
 };
 </script>

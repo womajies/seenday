@@ -1,14 +1,19 @@
 <template>
-  <div v-if="!pending" class="unload-info">
+  <template v-if="!pending">
+    <div class="unload-info__header">
+      <div class="unload-info__header-id">{{ itemInfo.id }}</div>
+      <div class="unload-info__header-name">{{ itemInfo.event }} {{ itemInfo.event }}</div>
+    </div>
     <div class="unload-info__zip block">
-      <div>
-
+      <div class="unload-info__zip-advice">
+        <i class="fa-solid fa-lightbulb" style="color: #2a6ee5;"/> Если после клика на ссылку загрузка не пошла, проверьте не блокирует ли браузер скачивание архива.
       </div>
       <h3 class="unload-info__zip-title text-bold">Ссылка для скачивания архива Выгрузки (.zip):</h3>
-      <a :href="itemInfo.download_link" class="link" target="_blank">{{ itemInfo.download_link }}</a>
+      <a :href="itemInfo.download_link" class="link" download>{{ itemInfo.download_link }}</a>
       <button class="unload-info__zip-copy span-link" type="button" @click="copyLink">Скопировать ссылку</button>
+      <button class="unload-info__close button" data-color="red" @click="$emit('close-info')"><span class="unload-info__close-icon">X</span><span class="unload-info__close-text">Закрыть</span></button>
     </div>
-  </div>
+  </template>
   <div v-else-if="error" class="block">
     {{ error?.message }}
   </div>
@@ -25,6 +30,8 @@ const props = defineProps({
   }
 });
 
+defineEmits(['close-info']);
+
 const downloadLink = ref(null);
 const itemData = ref(null);
 
@@ -33,7 +40,6 @@ itemData.value = data;
 
 const itemInfo = computed(() => {
   const info = JSON.parse(itemData.value.value).response.data[0];
-  console.log(info);
   downloadLink.value = info.download_link;
   return info;
 });

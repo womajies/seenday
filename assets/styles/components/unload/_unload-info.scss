@@ -1,5 +1,57 @@
 .unload-info {
+  position: relative;
+
+  @include start-at(xslg) {
+    overflow: hidden;
+  }
+
+  &__header {
+    display: flex;
+    background-color: var(--color-line-light-gray);
+    border-radius: $block-border-radius $block-border-radius 0 0;
+    box-shadow: var(--box_shadow_block);
+
+    &-id {
+      background-color: var(--bg_top_panel);
+      padding: 10px * $rem;
+      border-radius: $block-border-radius 0 0 0;
+      color: var(--color_white);
+      font-size: 16px * $tem;
+    }
+
+    &-name {
+      padding: 10px * $rem;
+      border-radius: 0 $block-border-radius 0 0;
+
+      @include start-at(xslg) {
+        max-width: 83%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+    }
+  }
+
   &__zip {
+    border-radius: 0 0 $block-border-radius $block-border-radius;
+
+    &-advice {
+      display: flex;
+      align-items: center;
+      padding: 10px * $rem;
+      margin-bottom: 5px * $rem;
+      background-color: var(--color-line-light-gray);
+      border-radius: $block-border-radius;
+      box-shadow: var(--box_shadow_block);
+      font-size: 10px * $tem;
+
+      i {
+        margin-right: 6px * $rem;
+      }
+    }
+
     &-title {
       display: block;
       font-size: 16px * $tem;
@@ -12,10 +64,39 @@
       cursor: pointer;
       background-color: transparent;
       text-decoration: dotted;
-  
+
       @include start-at(xslg) {
         display: inline-block;
         margin: 0 0 0 16px * $rem;
+      }
+    }
+  }
+
+  &__close {
+    display: block;
+    margin-top: 15px;
+    margin-left: auto;
+
+    @include start-at(xslg) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 39.5px * $rem;
+      margin-top: 0;
+      border-radius: 0 $border-radius 0 0;
+    }
+
+    &-icon {
+      display: none;
+
+      @include start-at(xslg) {
+        display: inline-block;
+      }
+    }
+
+    &-text {
+      @include start-at(xslg) {
+        display: none;
       }
     }
   }
